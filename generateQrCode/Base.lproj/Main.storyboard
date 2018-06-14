@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,65 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="generateQrCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DM4-fw-Rig">
+                                <rect key="frame" x="16" y="20" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-Kf-CmA">
+                                <rect key="frame" x="16" y="58" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Barcode"/>
+                                    <segment title="QRCode"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-r1-oVF">
+                                <rect key="frame" x="16" y="94" width="343" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="ui_generatePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRi-kQ-5Gm"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rcO-LD-S9d">
+                                <rect key="frame" x="87.5" y="135" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="31K-hR-BSu"/>
+                                    <constraint firstAttribute="height" constant="200" id="vSd-Py-Jgn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rcO-LD-S9d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F6i-bZ-num"/>
+                            <constraint firstItem="DM4-fw-Rig" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="JEE-ki-8On"/>
+                            <constraint firstItem="rcO-LD-S9d" firstAttribute="top" secondItem="LRb-r1-oVF" secondAttribute="bottom" constant="8" id="OBS-1M-KHV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DM4-fw-Rig" secondAttribute="trailing" constant="16" id="P8V-qq-l9w"/>
+                            <constraint firstItem="LRb-r1-oVF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="RGh-0Q-35l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c6a-Kf-CmA" secondAttribute="trailing" constant="16" id="cqK-Cn-Oh0"/>
+                            <constraint firstItem="c6a-Kf-CmA" firstAttribute="top" secondItem="DM4-fw-Rig" secondAttribute="bottom" constant="8" id="lw0-BT-AHh"/>
+                            <constraint firstItem="LRb-r1-oVF" firstAttribute="top" secondItem="c6a-Kf-CmA" secondAttribute="bottom" constant="8" id="mh7-ru-5jZ"/>
+                            <constraint firstItem="c6a-Kf-CmA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mhP-2N-ld2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LRb-r1-oVF" secondAttribute="trailing" constant="16" id="rly-M3-7sa"/>
+                            <constraint firstItem="DM4-fw-Rig" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zbS-vq-b2W"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="ui_codeSelector" destination="c6a-Kf-CmA" id="P4h-Ui-EMW"/>
+                        <outlet property="ui_dataField" destination="DM4-fw-Rig" id="SjF-qJ-8LB"/>
+                        <outlet property="ui_displayCodeView" destination="rcO-LD-S9d" id="dLc-kQ-JLW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
