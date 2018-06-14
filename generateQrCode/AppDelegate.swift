@@ -5,6 +5,9 @@
 //  Created by Patrick CHARDES on 13/06/2018.
 //  Copyright © 2018 Patrick CHARDES. All rights reserved.
 //
+// Le projet provient de http://iamyash.com/programming-tutorial/swift-4/how-to-generate-qr-code-or-bar-code-swift-4-xcode-9-0/
+
+
 
 import UIKit
 
