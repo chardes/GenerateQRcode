@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var ui_dataField: UITextField!
     @IBOutlet weak var ui_codeSelector: UISegmentedControl!
     @IBOutlet weak var ui_displayCodeView: UIImageView!
+    
+    private var brightness : CGFloat = UIScreen.main.brightness
     
     var filter:CIFilter!
     
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ui_dataField.delegate = self
     }
     
     @IBAction func ui_generatePressed(_ sender: UIButton) {
@@ -42,9 +45,35 @@ class ViewController: UIViewController {
             let transform = CGAffineTransform(scaleX: 10, y: 10)
             let image = UIImage(ciImage: filter.outputImage!.transformed(by: transform))
             
+            // On mets la luminosité au max
+            UIScreen.main.brightness = CGFloat(1.0)
             
             ui_displayCodeView.image = image
+            // Je supprime le clavier
+            self.view.endEditing(true)
         }
+    }
+
+    
+
+    //This is for the keyboard to GO AWAYY !! when user clicks anywhere on the view
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //This is for the keyboard to GO AWAYY !! when user clicks "Return" key  on the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        defaultBrightness()
+    }
+    
+    // On remet la luminosité par defaut
+    private func defaultBrightness() {
+        UIScreen.main.brightness = brightness
     }
 
 }
